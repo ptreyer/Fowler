@@ -5,16 +5,11 @@ public class Movie {
     public static final int NEW_RELEASE = 1;
 
     private final String title;
-    private int priceCode;
     private Price price;
 
     public Movie(String newtitle, int priceCode) {
         title = newtitle;
         setPriceCode(priceCode);
-    }
-
-    public int getPriceCode() {
-        return price.getPriceCode();
     }
 
     private void setPriceCode(int arg) {
@@ -33,7 +28,7 @@ public class Movie {
         }
     }
 
-    public String getTitle (){
+    public String getTitle() {
         return title;
     }
 
@@ -41,8 +36,8 @@ public class Movie {
         return price.getCharge(daysRented);
     }
 
-    public int getFrequentRenterPoints( int daysRented) {
-        return price.getFrequentRenterPoints(daysRented);
+    public int getFrequentRenterPoints() {
+        return price.getFrequentRenterPoints();
 
     }
 

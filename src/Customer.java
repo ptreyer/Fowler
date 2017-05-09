@@ -33,10 +33,12 @@ class Customer {
 
         for (Rental rental : rentals){
             builder.append(FowlerConstants.NEW_LINE);
+            builder.append(FowlerConstants.TAB);
             builder.append(rental.getMovie().getTitle());
             builder.append(FowlerConstants.TAB);
             builder.append(FowlerConstants.TAB);
             builder.append(rental.getDaysRented());
+            builder.append(FowlerConstants.TAB);
             builder.append(FowlerConstants.TAB);
             builder.append(Double.toString(rental.getCharge()));
         }

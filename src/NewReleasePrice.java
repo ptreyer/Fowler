@@ -6,6 +6,7 @@
  * To change this template use File | Settings | File Templates.
  */
 public class NewReleasePrice implements Price {
+
     public int getPriceCode(){
         return Movie.NEW_RELEASE;
     }
@@ -14,7 +15,7 @@ public class NewReleasePrice implements Price {
         return (daysRented * 3 );
     }
 
-    public int getFrequentRenterPoints(int daysRented) {
+    public int getFrequentRenterPoints() {
         return 2;
     }
 
