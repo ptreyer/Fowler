@@ -1,3 +1,5 @@
+package main;
+
 /**
  * Created with IntelliJ IDEA.
  * User: Berkling
@@ -5,15 +7,16 @@
  * Time: 12:49
  * To change this template use File | Settings | File Templates.
  */
-public class NewReleasePrice implements Price {
+public class RegularPrice implements Price {
 
     public double getCharge(int daysRented){
-        return (daysRented * 3 );
+        if (daysRented > 2) return (daysRented - 2 ) * 1.5;
+        else return 2;
     }
-
     public int getFrequentRenterPoints() {
-        return 2;
+        return 1;
     }
 
 }
+
 

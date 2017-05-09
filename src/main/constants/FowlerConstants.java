@@ -1,4 +1,4 @@
-package constants;
+package main.constants;
 
 public class FowlerConstants {
 

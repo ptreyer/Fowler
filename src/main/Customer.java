@@ -1,4 +1,6 @@
-import constants.FowlerConstants;
+package main;
+
+import main.constants.FowlerConstants;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +21,7 @@ class Customer {
 
     public String statement() {
         StringBuilder builder = new StringBuilder();
-        builder.append("Rental Record for ");
+        builder.append("main.Rental Record for ");
         builder.append(this.name);
         builder.append(FowlerConstants.NEW_LINE);
 
