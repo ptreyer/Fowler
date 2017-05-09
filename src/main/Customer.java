@@ -5,14 +5,14 @@ import main.constants.FowlerConstants;
 import java.util.ArrayList;
 import java.util.List;
 
-class Customer {
+public class Customer {
 
     private final String name;
     private final List<Rental> rentals;
 
     public Customer(String name) {
         this.name = name;
-        this.rentals = new ArrayList<>();
+        this.rentals = new ArrayList<Rental>();
     }
 
     public void addRental(Rental rental) {
