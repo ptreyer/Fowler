@@ -5,7 +5,7 @@
  * Time: 12:48
  * To change this template use File | Settings | File Templates.
  */
-public interface Price {
+interface Price {
     abstract int getPriceCode();
     abstract double getCharge(int daysRented);
     abstract int getFrequentRenterPoints(int daysRented);
