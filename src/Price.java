@@ -6,7 +6,7 @@
  * To change this template use File | Settings | File Templates.
  */
 interface Price {
-    abstract int getPriceCode();
-    abstract double getCharge(int daysRented);
-    abstract int getFrequentRenterPoints(int daysRented);
+    int getPriceCode();
+    double getCharge(int daysRented);
+    int getFrequentRenterPoints(int daysRented);
 }
