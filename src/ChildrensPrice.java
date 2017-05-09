@@ -7,7 +7,6 @@
  */
 public class ChildrensPrice implements Price {
 
-
     public int getPriceCode(){
         return Movie.CHILDRENS;
     }

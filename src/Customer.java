@@ -1,35 +1,55 @@
+import constants.FowlerConstants;
 
-import java.lang.*;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 class Customer {
-    private String name;
-    private Vector rentals = new Vector();
-    public Customer (String newname){
-        name = newname;
-    };
-    public void addRental(Rental arg) {
-        rentals.addElement(arg);
-    };
-    public String getName (){
-        return name;
-    };
-    public String statement() {
-        double totalAmount = 0;
-        Enumeration enum_rentals = rentals.elements();
-        String result = "Rental Record for " + this.getName() + "\n";
-        result += "\t" + "Title" + "\t" + "\t" + "Days" + "\t" + "Amount" + "\n";
 
-        while (enum_rentals.hasMoreElements()) {
-            Rental each = (Rental) enum_rentals.nextElement();
-            //determine amounts for each line
-            //show figures for this rental
-            result += "\t" + each.getMovie().getTitle()+ "\t" + "\t" + each.getDaysRented() + "\t" + String.valueOf(each.getCharge()) + "\n";
+    private String name;
+    private List<Rental> rentals;
+
+    public Customer(String name) {
+        this.name = name;
+        this.rentals = new ArrayList<>();
+    }
+
+    public void addRental(Rental rental) {
+        rentals.add(rental);
+    }
+
+    public String statement() {
+        StringBuilder builder = new StringBuilder();
+        builder.append("Rental Record for ");
+        builder.append(this.name);
+        builder.append(FowlerConstants.NEW_LINE);
+
+        builder.append(FowlerConstants.TAB);
+        builder.append("Title");
+        builder.append(FowlerConstants.TAB);
+        builder.append(FowlerConstants.TAB);
+        builder.append("Days");
+        builder.append(FowlerConstants.TAB);
+        builder.append("Amount");
+
+        for (Rental rental : rentals){
+            builder.append(FowlerConstants.NEW_LINE);
+            builder.append(rental.getMovie().getTitle());
+            builder.append(FowlerConstants.TAB);
+            builder.append(FowlerConstants.TAB);
+            builder.append(rental.getDaysRented());
+            builder.append(FowlerConstants.TAB);
+            builder.append(Double.toString(rental.getCharge()));
         }
-        //add footer lines
-        result += "Amount owed is " + String.valueOf(getTotalCharge()) + "\n";
-        result += "You earned " + String.valueOf(getTotalFrequentRenterPoints()) + " frequent renter points";
-        return result;
+        builder.append(FowlerConstants.NEW_LINE);
+        builder.append("Amount owed is: ");
+        builder.append(Double.toString(getTotalCharge()));
+        builder.append(FowlerConstants.NEW_LINE);
+        builder.append("You earned ");
+        builder.append(Double.toString(getTotalFrequentRenterPoints()));
+        builder.append(" frequent renter points");
+        builder.append(FowlerConstants.NEW_LINE);
+
+        return builder.toString();
     }
 
 //    It is worth stopping to think a bit about the last refactoring. Most refactorings reduce the amount
@@ -47,20 +67,16 @@ class Customer {
 
     private double getTotalCharge() {
         double result = 0;
-        Enumeration enum_rentals = rentals.elements();
-        while (enum_rentals.hasMoreElements()) {
-            Rental each = (Rental) enum_rentals.nextElement();
-            result += each.getCharge();
+        for (Rental rental: rentals) {
+            result = result + rental.getCharge();
         }
         return result;
     }
 
     private int getTotalFrequentRenterPoints(){
         int result = 0;
-        Enumeration enum_rentals = rentals.elements();
-        while (enum_rentals.hasMoreElements()) {
-            Rental each = (Rental) enum_rentals.nextElement();
-            result += each.getFrequentRenterPoints();
+        for (Rental rental: rentals) {
+            result = result + rental.getFrequentRenterPoints();
         }
         return result;
     }
